@@ -9,19 +9,39 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="http://afisha.uz/app/main.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/knockout-3.3.0.js"></script>
+    <script>
+        const GET = "get";
+        const POST = "post";
 
+        var model = {
+            movie: ko.observableArray()
+        }
+
+        function sendRequest(url,type, callbackFunction) {
+            $.ajax({
+                url: "api/"+url,
+                method: type,
+                success: callbackFunction
+            });
+        }
+
+        $(document).ready(function () {
+            sendRequest("movie", GET, function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    model.movie.push(data[i]);
+                }                
+            });
+            ko.applyBindings(model);
+        });
+    </script>
     <title>Index</title>
 </head>
 <body>
-    <div> 
-        @foreach (var item in Model)
-        {
-            <div>                
-                @Html.ActionLink(@item.name, "Details", new { id = @item.movie_id})
-            </div>
-        }
+    <div data-bind="foreach: movie" class="article"> 
+       <div data-bind="text: name"></div>
     </div>
 </body>
 </html>
