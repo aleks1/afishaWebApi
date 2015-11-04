@@ -1,0 +1,27 @@
+﻿@model IEnumerable<afishaWebApi.Models.DataClasses.Movie>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/knockout-3.3.0.js"></script>
+
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        @foreach (var item in Model)
+        {
+            <div>                
+                @Html.ActionLink(@item.name, "Details", new { id = @item.movie_id})
+            </div>
+        }
+    </div>
+</body>
+</html>
