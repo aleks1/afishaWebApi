@@ -1,0 +1,29 @@
+﻿@using afishaWebApi.Models.DataClasses
+
+<div class="article" id="MovieDetailsMain">    
+    <img data-bind="attr: {src:image_big_path}" />
+    <div><label>ID:</label> <span data-bind="text: id"></span></div>
+    <div><label>Название:</label> <span data-bind="text: name"></span></div>
+    <div><label>Актеры:</label> <span data-bind="text: actors"></span></div>
+    <div><label>Страна:</label> <span data-bind="text: country"></span></div>
+    <div><label>Описание:</label> <span data-bind="text: description"></span></div>
+    <div><label>Режиссер:</label> <span data-bind="text: director"></span></div>
+    <div><label>Длительность:</label> <span data-bind="text: duration"></span></div>
+    <div><label>Формат:</label> <span data-bind="text: format"></span></div>
+    <div><label>Жанр:</label> <span data-bind="text: genre"></span></div>    
+    <div><label>Рейтинг IMDB:</label> <span data-bind="text: imdb_rating"></span></div>
+    <div><label>Рекомендовано:</label> <span data-bind="text: is_recommended"></span></div>
+    <div><label>Оригинальное название:</label> <span data-bind="text: original"></span></div>
+    <div><label>Ссылка:</label> <a data-bind="attr: {href:permalink}"></a></div>
+    <div><label>Производство:</label> <span data-bind="text: production"></span></div>
+    <div><label>Рейтинг:</label> <span data-bind="text: rating"></span></div>
+    <div><label>Возрастное ограничение:</label> <span data-bind="text: rating_code"></span></div>
+    <div><label>Уведомление рейтинга:</label> <span data-bind="text: rating_notice"></span></div>
+    <div><label>Трейлер на mover.uz:</label> <span data-bind="text: trailer_moveruz"></span></div>
+    <div><label>Ссылка на сайт с описанием:</label> <span data-bind="text: url"></span></div>
+    <div><label>Голоса:</label> <span data-bind="text: voices"></span></div>
+</div>
+<div id="MovieDetailsPhotoes" data-bind="foreach: photoes">
+    <img data-bind="attr: {src:image_small_path}" />
+</div>
+
