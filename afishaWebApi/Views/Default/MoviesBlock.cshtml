@@ -3,7 +3,7 @@
 
 <div data-bind="foreach: movies" class="article" >
     <div>
-        <img data-bind="attr: {src:image_url}"></img>
+        <img data-bind="attr: {src:image_url}" />
         <div><label>Название:</label> <a data-bind="text: name, click: movieDetails"></a></div>
         <div><label>Страна:</label> <span data-bind="text: country"></span></div>
         <div><label>Премьера:</label> <span data-bind="text: date_premiere"></span></div>

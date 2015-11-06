@@ -1,6 +1,6 @@
 ﻿@using afishaWebApi.Models.DataClasses
 
-<div class="article" id="MovieDetailsMain">    
+<div class="article articleMain" id="MovieDetailsMain">
     <img data-bind="attr: {src:image_big_path}" />
     <div><label>ID:</label> <span data-bind="text: id"></span></div>
     <div><label>Название:</label> <span data-bind="text: name"></span></div>
@@ -10,7 +10,7 @@
     <div><label>Режиссер:</label> <span data-bind="text: director"></span></div>
     <div><label>Длительность:</label> <span data-bind="text: duration"></span></div>
     <div><label>Формат:</label> <span data-bind="text: format"></span></div>
-    <div><label>Жанр:</label> <span data-bind="text: genre"></span></div>    
+    <div><label>Жанр:</label> <span data-bind="text: genre"></span></div>
     <div><label>Рейтинг IMDB:</label> <span data-bind="text: imdb_rating"></span></div>
     <div><label>Рекомендовано:</label> <span data-bind="text: is_recommended"></span></div>
     <div><label>Оригинальное название:</label> <span data-bind="text: original"></span></div>
@@ -26,4 +26,8 @@
 <div id="MovieDetailsPhotoes" data-bind="foreach: photoes">
     <img data-bind="attr: {src:image_small_path}" />
 </div>
+<div id="MovieDetailsAfisha" data-bind="foreach:">
+
+</div>
+
 
