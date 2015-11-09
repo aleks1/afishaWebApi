@@ -1,0 +1,75 @@
+﻿body {
+    font-family: "Helvetica Neue", Arial, sans-serif; font-size: 1em; color:#000;
+}
+
+.tabs {
+    font-size:0;
+}
+
+.tabs li {
+    font-size:15px;
+    display:inline-block;
+    padding: 5px 5px;
+    border:1px solid #000;
+    border-radius: 5px;
+    color:#000;
+    cursor:pointer;
+}
+
+    .tabs li.active {
+        border-bottom:none;
+        border-radius:5px 5px 0 0;
+        border-left: 1px #fff solid;
+        border-right: 1px #fff solid;
+    }
+
+    .tabs li:first-child {
+        border-left: 1px #000 solid;
+    }    
+
+.mainBlock {
+    padding:0 3px;
+}
+
+.mainBlock > div {
+    display:none;
+    width:100%;
+}
+
+.mainBlock > div.active {
+    display:block;
+}
+
+.article label {
+    font-weight:bold;
+    display:inline-block;
+    width: 250px;
+}
+
+.article img {
+    float:right;
+}
+
+.articleMain > div {
+    padding:5px 0;
+    border-bottom:1px #000 solid;
+    overflow:hidden;
+}
+
+a {
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+a:hover {
+    text-decoration:none;
+}
+
+.moviesBlock > div {
+    display:none;
+}
+
+.moviesBlock > div.active {
+    display:block;
+}
+
