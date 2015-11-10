@@ -22,8 +22,8 @@ namespace afishaWebApi.Models
                 }
                 catch (Exception)
                 {
-                    
-                    return null;
+
+                    throw;
                 }
                 
             }
@@ -40,6 +40,24 @@ namespace afishaWebApi.Models
                 var json = wc.DownloadString("http://www.afisha.uz/app/movies/" + movieId);
                 MovieDetailsRoot m = JsonConvert.DeserializeObject<MovieDetailsRoot>(json);
                 return m.data;
+            }
+        }
+
+        public static Cinema getCinema(int cinemaId) {
+            using (WebClient wc = new WebClient())
+            {
+                try
+                {
+                    var json = wc.DownloadString("http://www.afisha.uz/app/cinema/"+cinemaId);
+                    CinemaRoot m = JsonConvert.DeserializeObject<CinemaRoot>(json);
+                    return m.data;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
             }
         }
     }

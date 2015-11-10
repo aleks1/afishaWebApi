@@ -113,11 +113,13 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CinemaController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataClasses\Cinema.cs" />
     <Compile Include="Models\DataClasses\Cover.cs" />
     <Compile Include="Models\DataClasses\Movie.cs" />
     <Compile Include="Models\DataClasses\MovieDetails.cs" />

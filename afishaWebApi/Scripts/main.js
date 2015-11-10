@@ -98,12 +98,14 @@ function mainMovies() {
 
 function cinemaDetails(item) {
     sendRequest("cinema", GET, function (data) {
-        var Cinema = {
-            name: data.name,
-            description: data.description
+        console.log(data.cinema);
+        var modelCinema = {
+            name: data.cinema.name,
+            description: data.cinema.description
         }
+        ko.applyBindings(modelCinema, document.getElementById('CinemaBlock'));
     }, item.cinema_id);
-    ko.applyBindings(Cinema, document.getElementById('Cinema'));
+    
     $('.moviesBlock > div').removeClass('active');    
     $('#Cinema').addClass('active');
 }
