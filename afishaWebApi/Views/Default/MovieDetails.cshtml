@@ -1,28 +1,32 @@
 ﻿@using afishaWebApi.Models.DataClasses
 
-
+<div id="MovieDetailsReview" class="review">
+    <span data-bind="text: intro"></span>
+</div>
 <div class="article" id="MovieDetailsMain">
     <img data-bind="attr: {src:image_big_path}" />
-    <div><label>ID:</label> <span data-bind="text: id"></span></div>
-    <div><label>Название:</label> <span data-bind="text: name"></span></div>
-    <div><label>Актеры:</label> <span data-bind="text: actors"></span></div>
-    <div><label>Страна:</label> <span data-bind="text: country"></span></div>
-    <div><label>Описание:</label> <span data-bind="text: description" class="long"></span></div>
-    <div><label>Режиссер:</label> <span data-bind="text: director"></span></div>
-    <div><label>Длительность:</label> <span data-bind="text: duration"></span></div>
-    <div><label>Формат:</label> <span data-bind="text: format"></span></div>
-    <div><label>Жанр:</label> <span data-bind="text: genre"></span></div>
-    <div><label>Рейтинг IMDB:</label> <span data-bind="text: imdb_rating"></span></div>
-    <div><label>Рекомендовано:</label> <span data-bind="text: is_recommended"></span></div>
-    <div><label>Оригинальное название:</label> <span data-bind="text: original"></span></div>
-    <div><label>Ссылка:</label> <a data-bind="attr: {href:permalink}"></a></div>
-    <div><label>Производство:</label> <span data-bind="text: production"></span></div>
-    <div><label>Рейтинг:</label> <span data-bind="text: rating"></span></div>
-    <div><label>Возрастное ограничение:</label> <span data-bind="text: rating_code"></span></div>
-    <div><label>Уведомление рейтинга:</label> <span data-bind="text: rating_notice"></span></div>
-    <div><label>Трейлер на mover.uz:</label> <span data-bind="text: trailer_moveruz"></span></div>
-    <div><label>Ссылка на сайт с описанием:</label> <span data-bind="text: url"></span></div>
-    <div><label>Голоса:</label> <span data-bind="text: voices"></span></div>
+    <table>
+        <tr><td>ID:</td> <td data-bind="text: id"></td></tr>
+        <tr><td>Название:</td> <td data-bind="text: name"></td></tr>
+        <tr><td>Актеры:</td> <td data-bind="text: actors"> </td></tr>
+        <tr><td>Страна: </td><td data-bind="text: country"> </td></tr>
+        <tr><td>Описание: </td><td data-bind="text: description" > </td></tr>
+        <tr><td>Режиссер: </td><td data-bind="text: director"> </td></tr>
+        <tr><td>Длительность: </td><td data-bind="text: duration"> </td></tr>
+        <tr><td>Формат: </td><td data-bind="text: format"> </td></tr>
+        <tr><td>Жанр: </td><td data-bind="text: genre"> </td></tr>
+        <tr><td>Рейтинг IMDB: </td><td data-bind="text: imdb_rating"> </td></tr>
+        <tr><td>Рекомендовано: </td><td data-bind="text: is_recommended"> </td></tr>
+        <tr><td>Оригинальное название: </td><td data-bind="text: original"> </td></tr>
+        <tr><td>Ссылка:</td><td> <a data-bind="attr: {href:permalink}"></a></td></tr>
+        <tr><td>Производство: </td><td data-bind="text: production"> </td></tr>
+        <tr><td>Рейтинг: </td><td data-bind="text: rating"> </td></tr>
+        <tr><td>Возрастное ограничение: </td><td data-bind="text: rating_code"> </td></tr>
+        <tr><td>Уведомление рейтинга: </td><td data-bind="text: rating_notice"> </td></tr>
+        <tr><td>Трейлер на mover.uz: </td><td data-bind="text: trailer_moveruz"> </td></tr>
+        <tr><td>Ссылка на сайт с описанием: </td><td data-bind="text: url"> </td></tr>
+        <tr><td>Голоса: </td><td data-bind="text: voices"> </td></tr>
+    </table>
 </div>
 <div id="MovieDetailsPhotoes" data-bind="foreach: photoes">
     <img data-bind="attr: {src:image_small_path}" />
@@ -31,7 +35,7 @@
 <div id="MovieDetailsAfishas" data-bind="foreach:afishas">
     <div class="dateRow"><label>Дата показа:</label> <span data-bind="text: show_date"></span></div>
     <div class="shows article" data-bind="foreach: shows">
-        <a data-bind="text: cinema, click: cinema"></a>
+        <a data-bind="text: cinema, click: cinemaDetails"></a><span data-bind="text: cinema_id"></span>
         <div><label>Время показов:</label><span data-bind="text: formatted_times"></span></div>
         <div><label>Формат:</label><span data-bind="text: format"></span></div>
         <div><label>Doubled:</label><span data-bind="text: doubled"></span></div>
@@ -46,5 +50,6 @@
         <div><label>Добавил:</label><span data-bind="text: date_added"></span></div>
     </div>            
 </div>
+
 
 

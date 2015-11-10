@@ -82,7 +82,7 @@ a:hover {
 }
 
 .dateRow {
-        background:red;
+    background:red;
     padding:3px;
     color:#fff;
     text-transform:uppercase;
@@ -103,9 +103,14 @@ a:hover {
     font-style:italic;
 }
 
-.long {
-    display:block;
-    padding-left:250px;
+.article table td:first-child{
+    width:250px;
+    font-weight:bold;
+    vertical-align:top;        
+}
+
+.review {
+    font-size:20px;
 }
 
 

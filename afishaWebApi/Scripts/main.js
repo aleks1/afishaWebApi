@@ -71,6 +71,10 @@ function movieDetails(item) {
             }
             ko.applyBindings(modelMovieDetailsComments, document.getElementById('MovieDetailsComments'));
 
+            var modelMovieDetailsReview = {
+                intro: data.review.intro
+            }
+            ko.applyBindings(modelMovieDetailsReview, document.getElementById('MovieDetailsReview'));
 
             $('.moviesBlock > div').removeClass('active');
             $('#MovieDetails').addClass('active');
@@ -90,6 +94,18 @@ function mainMovies() {
         ko.applyBindings(modelMovies, document.getElementById('MoviesBlock'));
     });
     $('#MoviesBlock').addClass('active');
+}
+
+function cinemaDetails(item) {
+    sendRequest("cinema", GET, function (data) {
+        var Cinema = {
+            name: data.name,
+            description: data.description
+        }
+    }, item.cinema_id);
+    ko.applyBindings(Cinema, document.getElementById('Cinema'));
+    $('.moviesBlock > div').removeClass('active');    
+    $('#Cinema').addClass('active');
 }
 
 $(document).ready(function () {
