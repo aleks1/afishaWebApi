@@ -1,7 +1,7 @@
 ﻿@using afishaWebApi.Models.DataClasses
 @model IEnumerable<Movie>
 
-<div data-bind="foreach: movies" class="article" >
+<div data-bind="foreach: movies" class="article articleMain" >
     <div>
         <img data-bind="attr: {src:image_url}" />
         <div><label>Название:</label> <a data-bind="text: name, click: movieDetails"></a></div>

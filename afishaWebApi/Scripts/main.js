@@ -15,11 +15,11 @@ var modelMovieDetailsPhotoes = {
 }
 
 var modelMovieDetailsAfisha = {
-    shows: ko.observableArray()
+    afishas: ko.observableArray(),
 }
 
-var modelMovieDetailsCinema = {
-    shows: ko.observableArray(),    
+var modelMovieDetailsComments = {
+    comments: ko.observableArray(),
 }
 
 function movieDetails(item) {
@@ -53,13 +53,25 @@ function movieDetails(item) {
             }
             ko.applyBindings(modelMovieDetails, document.getElementById('MovieDetailsMain'));
 
-            //Adding movie photoes
+            //Adding movie photos
             for (var i = 0; i < data.photos.length; i++) {
-                modelMovieDetailsPhotoes.photoes.push(data.photos[i]);
-                console.log(data.photos[i]);
+                modelMovieDetailsPhotoes.photoes.push(data.photos[i]);                
             }
             ko.applyBindings(modelMovieDetailsPhotoes, document.getElementById('MovieDetailsPhotoes'));
-            
+
+            //Adding movie afisha
+            for (var i = 0; i < data.afisha.length; i++) {
+                modelMovieDetailsAfisha.afishas.push(data.afisha[i]);                
+            }
+            ko.applyBindings(modelMovieDetailsAfisha, document.getElementById('MovieDetailsAfishas'));
+
+            //Adding movie comments
+            for (var i = 0; i < data.comments.length; i++) {
+                modelMovieDetailsComments.comments.push(data.comments[i]);
+            }
+            ko.applyBindings(modelMovieDetailsComments, document.getElementById('MovieDetailsComments'));
+
+
             $('.moviesBlock > div').removeClass('active');
             $('#MovieDetails').addClass('active');
         },

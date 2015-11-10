@@ -73,3 +73,39 @@ a:hover {
     display:block;
 }
 
+.title1 {
+    font-size:20px;
+}
+
+.shows {
+    padding-left:20px;
+}
+
+.dateRow {
+        background:red;
+    padding:3px;
+    color:#fff;
+    text-transform:uppercase;
+}
+
+.comments > div {
+    overflow:hidden;
+    padding:10px 2px
+}
+
+    .comments > div img {
+        float:left;
+        margin:0 5px 2px 0;
+        border:1px #000 solid;
+    }
+
+.comment {
+    font-style:italic;
+}
+
+.long {
+    display:block;
+    padding-left:250px;
+}
+
+

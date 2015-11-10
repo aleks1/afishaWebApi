@@ -14,9 +14,18 @@ namespace afishaWebApi.Models
         public static RootObject getData() {
             using (WebClient wc = new WebClient())
             {
-                var json = wc.DownloadString("http://www.afisha.uz/app/");
-                RootObject m = JsonConvert.DeserializeObject<RootObject>(json);
-                return m;
+                try
+                {
+                    var json = wc.DownloadString("http://www.afisha.uz/app/");
+                    RootObject m = JsonConvert.DeserializeObject<RootObject>(json);
+                    return m;
+                }
+                catch (Exception)
+                {
+                    
+                    return null;
+                }
+                
             }
         }
 
