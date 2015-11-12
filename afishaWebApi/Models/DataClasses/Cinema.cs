@@ -8,13 +8,14 @@ namespace afishaWebApi.Models.DataClasses
 
     public class RestDays
     {
-        public int __invalid_name__1 { get; set; }
-        public int __invalid_name__2 { get; set; }
-        public int __invalid_name__3 { get; set; }
-        public int __invalid_name__4 { get; set; }
-        public int __invalid_name__5 { get; set; }
-        public int __invalid_name__6 { get; set; }
-        public int __invalid_name__7 { get; set; }
+        public string monday { get; set; }
+        public string tuesday { get; set; }
+        public string wednesday { get; set; }
+        public string thursday { get; set; }
+        public string friday { get; set; }
+        public string saturday { get; set; }
+        public string sunday { get; set; }
+        
     }
 
     public class CinemaDetails

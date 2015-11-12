@@ -54,7 +54,6 @@ namespace afishaWebApi.Models
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
 

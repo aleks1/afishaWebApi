@@ -15,14 +15,24 @@ var modelMovieDetailsPhotoes = {
 }
 
 var modelMovieDetailsAfisha = {
-    afishas: ko.observableArray(),
+    afishas: ko.observableArray()
 }
 
 var modelMovieDetailsComments = {
-    comments: ko.observableArray(),
+    comments: ko.observableArray()
+}
+
+var modelCinemaAfisha = {
+    cinemas: ko.observableArray()
 }
 
 function movieDetails(item) {
+    ko.cleanNode($('#MovieDetailsMain')[0]);
+    ko.cleanNode($('#MovieDetailsPhotoes')[0]);
+    ko.cleanNode($('#MovieDetailsAfishas')[0]);
+    ko.cleanNode($('#MovieDetailsComments')[0]);
+    ko.cleanNode($('#MovieDetailsReview')[0]);
+
     sendRequest("movie", GET, function (data) {
             //Main info
             var modelMovieDetails = {
@@ -71,6 +81,7 @@ function movieDetails(item) {
             }
             ko.applyBindings(modelMovieDetailsComments, document.getElementById('MovieDetailsComments'));
 
+            //Adding movie review
             var modelMovieDetailsReview = {
                 intro: data.review.intro
             }
@@ -98,12 +109,24 @@ function mainMovies() {
 
 function cinemaDetails(item) {
     sendRequest("cinema", GET, function (data) {
-        console.log(data.cinema);
         var modelCinema = {
             name: data.cinema.name,
-            description: data.cinema.description
+            description: data.cinema.description.replace(/\n/g, '<br />'),
+            address: data.cinema.city + ", " + data.cinema.address,
+            dinner: "C " + data.cinema.dinner_from + ", до " + data.cinema.dinner_to,
+            email: data.cinema.email,
+            guides: data.cinema.guides,
+            phones: data.cinema.phone,
+            website: data.cinema.website
         }
         ko.applyBindings(modelCinema, document.getElementById('CinemaBlock'));
+
+        //Cinema afisha
+        for (var i = 0; i < data.afisha.length; i++) {
+            modelCinemaAfisha.cinemas.push(data.afisha[i]);
+        }
+        ko.applyBindings(modelCinemaAfisha, document.getElementById('CinemaAfisha'));
+
     }, item.cinema_id);
     
     $('.moviesBlock > div').removeClass('active');    
