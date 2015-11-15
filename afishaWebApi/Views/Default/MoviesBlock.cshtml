@@ -1,7 +1,8 @@
 ﻿@using afishaWebApi.Models.DataClasses
 @model IEnumerable<Movie>
 
-<div data-bind="foreach: movies" class="article articleMain" >
+<div data-bind="template: {name:'MovieTemplate', foreach: movies}" class="article articleMain" id="Movies"></div>
+<script type="text/html" id="MovieTemplate">
     <div>
         <img data-bind="attr: {src:image_url}" />
         <div><label>Название:</label> <a data-bind="text: name, click: movieDetails"></a></div>
@@ -11,4 +12,4 @@
         <div><label>Жанр:</label> <span data-bind="text: genre"></span></div>
         <div><label>Оригинальное название:</label> <span data-bind="text: original"></span></div>
     </div>
-</div>
+</script>

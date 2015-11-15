@@ -16,14 +16,14 @@ namespace afishaWebApi.Models
             {
                 try
                 {
-                    var json = wc.DownloadString("http://www.afisha.uz/app/");
+                    var json = wc.DownloadString("http://www.afisha.uz/app");
                     RootObject m = JsonConvert.DeserializeObject<RootObject>(json);
                     return m;
                 }
-                catch (Exception)
-                {
-
-                    throw;
+                catch (Exception e)
+                {                    
+                    throw e;
+                    
                 }
                 
             }
@@ -59,5 +59,9 @@ namespace afishaWebApi.Models
 
             }
         }
+    }
+
+    class AfishaException : Exception { 
+
     }
 }

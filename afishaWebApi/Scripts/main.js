@@ -1,7 +1,8 @@
 ﻿const GET = "get";
 const POST = "post";
 
-function sendRequest(url, type, callbackFunction,addData) {
+function sendRequest(url, type, callbackFunction, addData) {
+    preLoad();
     $.ajax({
         url: "api/" + url,
         method: type,
@@ -10,8 +11,8 @@ function sendRequest(url, type, callbackFunction,addData) {
     });
 }
 
-var modelMovieDetailsPhotoes = {
-    photoes: ko.observableArray()
+var modelMovieDetailsPhotos = {
+    photos: ko.observableArray()
 }
 
 var modelMovieDetailsAfisha = {
@@ -26,13 +27,8 @@ var modelCinemaAfisha = {
     cinemas: ko.observableArray()
 }
 
-function movieDetails(item) {
-    ko.cleanNode($('#MovieDetailsMain')[0]);
-    ko.cleanNode($('#MovieDetailsPhotoes')[0]);
-    ko.cleanNode($('#MovieDetailsAfishas')[0]);
-    ko.cleanNode($('#MovieDetailsComments')[0]);
-    ko.cleanNode($('#MovieDetailsReview')[0]);
 
+function movieDetails(item) {
     sendRequest("movie", GET, function (data) {
             //Main info
             var modelMovieDetails = {
@@ -62,12 +58,14 @@ function movieDetails(item) {
                 id: data.movie_id
             }
             ko.applyBindings(modelMovieDetails, document.getElementById('MovieDetailsMain'));
-
+          
             //Adding movie photos
+            modelMovieDetailsPhotos.photos.removeAll();
             for (var i = 0; i < data.photos.length; i++) {
-                modelMovieDetailsPhotoes.photoes.push(data.photos[i]);                
+                modelMovieDetailsPhotos.photos.push(data.photos[i]);                
             }
-            ko.applyBindings(modelMovieDetailsPhotoes, document.getElementById('MovieDetailsPhotoes'));
+           
+            ko.applyBindings(modelMovieDetailsPhotos, document.getElementById("MovieDetailsPhotos"));
 
             //Adding movie afisha
             for (var i = 0; i < data.afisha.length; i++) {
@@ -94,17 +92,29 @@ function movieDetails(item) {
     );
 }
 
-function mainMovies() {
+function mainMovies() {    
     sendRequest("movie", GET, function (data) {
         var modelMovies = {
             movies: ko.observableArray()
         }
+        modelMovies.movies.removeAll();
         for (var i = 0; i < data.length; i++) {
             modelMovies.movies.push(data[i]);
         }
-        ko.applyBindings(modelMovies, document.getElementById('MoviesBlock'));
+        ko.applyBindings(modelMovies, document.getElementById('Movies'));
     });
+    $('.moviesBlock > div').removeClass('active');
     $('#MoviesBlock').addClass('active');
+}
+
+function preLoad() {
+
+    ko.cleanNode($('#Movies')[0]);
+    ko.cleanNode($('#MovieDetailsMain')[0]);
+    ko.cleanNode($('#MovieDetailsPhotos')[0]);
+    ko.cleanNode($('#MovieDetailsAfishas')[0]);
+    ko.cleanNode($('#MovieDetailsComments')[0]);
+    ko.cleanNode($('#MovieDetailsReview')[0]);
 }
 
 function cinemaDetails(item) {

@@ -111,6 +111,20 @@ a:hover {
 
 .review {
     font-size:20px;
+    padding:5px;
+    font-weight:bold;
+}
+
+.moviesBlock {
+    position:relative;
+}
+
+.preload {
+    position:absolute;
+    top:0;
+    left:0;
+    background: url("../Images/loading.gif") no-repeat center;
+    display:block;
 }
 
 
