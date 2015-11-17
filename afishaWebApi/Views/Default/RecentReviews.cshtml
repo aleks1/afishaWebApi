@@ -1,0 +1,15 @@
+﻿<div data-bind="template: {name: 'templateRecentReviews', foreach: recentReviews}"></div>
+<script type="text/html" id="templateRecentReviews">
+    <div class="article articleMain">
+        <div>
+            <img data-bind="attr: {src: image_big_path}" />
+            <table>
+                <tr><td>Название:</td> <td data-bind="text: name"></td></tr>
+                <tr><td>Описание:</td> <td data-bind="text: intro"></td></tr>
+                <tr><td>Раздел:</td> <td data-bind="text: section_name"></td></tr>
+                <tr><td>Дата:</td> <td data-bind="text: date_published"></td></tr>
+            </table>
+        </div>
+    </div>
+</script>
+

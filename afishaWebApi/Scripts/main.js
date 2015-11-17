@@ -27,6 +27,57 @@ var modelCinemaAfisha = {
     cinemas: ko.observableArray()
 }
 
+var modelTopMaterials = {
+    topMaterials: ko.observableArray()
+}
+
+var modelNearestMaterials = {
+    nearestMaterials: ko.observableArray()
+}
+
+var modelRecentPhotosets = {
+    recentPhotosets: ko.observableArray()
+}
+var modelRecentReviews = {
+    recentReviews: ko.observableArray()
+}
+
+function topMaterials() {
+    sendRequest("topMaterial", GET, function (data) {
+        for (var i = 0; i < data.length; i++) {
+            modelTopMaterials.topMaterials.push(data[i]);
+        }
+        ko.applyBindings(modelTopMaterials, document.getElementById("TopMaterialsBlock"));
+    });
+}
+
+function nearestMaterials() {
+    sendRequest("nearestMaterial", GET, function (data) {
+        for (var i = 0; i < data.length; i++) {
+            modelNearestMaterials.nearestMaterials.push(data[i]);
+        }
+        ko.applyBindings(modelNearestMaterials, document.getElementById("NearestMaterialsBlock"));
+    });
+}
+
+function recentPhotosets() {
+    sendRequest("recentPhotoset", GET, function (data) {
+        for (var i = 0; i < data.length; i++) {
+            modelRecentPhotosets.recentPhotosets.push(data[i]);
+        }
+        ko.applyBindings(modelRecentPhotosets, document.getElementById("RecentPhotosetsBlock"));
+    });
+}
+
+
+function recentReviews() {
+    sendRequest("recentReview", GET, function (data) {
+        for (var i = 0; i < data.length; i++) {
+            modelRecentReviews.recentReviews.push(data[i]);
+        }
+        ko.applyBindings(modelRecentReviews, document.getElementById("RecentReviewsBlock"));
+    });
+}
 
 function movieDetails(item) {
     sendRequest("movie", GET, function (data) {
@@ -63,8 +114,7 @@ function movieDetails(item) {
             modelMovieDetailsPhotos.photos.removeAll();
             for (var i = 0; i < data.photos.length; i++) {
                 modelMovieDetailsPhotos.photos.push(data.photos[i]);                
-            }
-           
+            }           
             ko.applyBindings(modelMovieDetailsPhotos, document.getElementById("MovieDetailsPhotos"));
 
             //Adding movie afisha
@@ -84,7 +134,7 @@ function movieDetails(item) {
                 intro: data.review.intro
             }
             ko.applyBindings(modelMovieDetailsReview, document.getElementById('MovieDetailsReview'));
-
+            $('.preload').css('display', 'none');
             $('.moviesBlock > div').removeClass('active');
             $('#MovieDetails').addClass('active');
         },
@@ -102,19 +152,24 @@ function mainMovies() {
             modelMovies.movies.push(data[i]);
         }
         ko.applyBindings(modelMovies, document.getElementById('Movies'));
+        $('.preload').css('display', 'none');
+        $('.moviesBlock > div').removeClass('active');
+        $('#MoviesBlock').addClass('active');
     });
-    $('.moviesBlock > div').removeClass('active');
-    $('#MoviesBlock').addClass('active');
+
 }
 
 function preLoad() {
-
+    $('.preload').css('display','block');
     ko.cleanNode($('#Movies')[0]);
     ko.cleanNode($('#MovieDetailsMain')[0]);
     ko.cleanNode($('#MovieDetailsPhotos')[0]);
     ko.cleanNode($('#MovieDetailsAfishas')[0]);
     ko.cleanNode($('#MovieDetailsComments')[0]);
     ko.cleanNode($('#MovieDetailsReview')[0]);
+    ko.cleanNode($('#CinemaAfisha')[0]);
+    ko.cleanNode($('#CinemaBlock')[0]);
+    window.scrollTo(0,0);
 }
 
 function cinemaDetails(item) {
@@ -132,15 +187,15 @@ function cinemaDetails(item) {
         ko.applyBindings(modelCinema, document.getElementById('CinemaBlock'));
 
         //Cinema afisha
+        modelCinemaAfisha.cinemas.removeAll();
         for (var i = 0; i < data.afisha.length; i++) {
             modelCinemaAfisha.cinemas.push(data.afisha[i]);
         }
         ko.applyBindings(modelCinemaAfisha, document.getElementById('CinemaAfisha'));
-
-    }, item.cinema_id);
-    
-    $('.moviesBlock > div').removeClass('active');    
-    $('#Cinema').addClass('active');
+        $('.preload').css('display', 'none');
+        $('.moviesBlock > div').removeClass('active');
+        $('#Cinema').addClass('active');
+    }, item.cinema_id);    
 }
 
 $(document).ready(function () {
@@ -149,5 +204,8 @@ $(document).ready(function () {
         $('.mainBlock > div').removeClass('active').eq($(this).index()).addClass('active');        
     });
     mainMovies();
-   
+    topMaterials();
+    nearestMaterials();
+    recentPhotosets();
+    recentReviews();
 });

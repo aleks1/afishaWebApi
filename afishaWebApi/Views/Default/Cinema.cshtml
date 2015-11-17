@@ -11,16 +11,18 @@
     </table>
 </div>
 <div class="title1">Показы</div>
-<div id="CinemaAfisha" data-bind="foreach: cinemas">
+
+<div id="CinemaAfisha" data-bind="template: {name: 'templateCinemaAfisha', foreach: cinemas}"></div>
+<script type="text/html" id="templateCinemaAfisha">
     <div class="dateRow"><label>Дата показа:</label> <span data-bind="text: show_date"></span></div>
     <div data-bind="foreach:shows" class="article">
         <div class="shows">
             <div data-bind="foreach: movie">
                 <a data-bind="text: name,click: movieDetails "></a>
-                <div><label>Формат:</label><span data-bind="text: format"></span></div>     
-                <div><label>Жанр:</label><span data-bind="text: genre"></span></div>                
+                <div><label>Формат:</label><span data-bind="text: format"></span></div>
+                <div><label>Жанр:</label><span data-bind="text: genre"></span></div>
             </div>
-            <div><label>Время показа:</label><span data-bind="text: times"></span></div>        
+            <div><label>Время показа:</label><span data-bind="text: times"></span></div>
         </div>
     </div>
-</div>
+</script>

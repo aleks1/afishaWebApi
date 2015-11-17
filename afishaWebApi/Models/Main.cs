@@ -11,27 +11,34 @@ namespace afishaWebApi.Models
 {
     public class Main
     {
-        public static RootObject getData() {
+        public static RootObject data;
+
+        public static void getData() {            
             using (WebClient wc = new WebClient())
-            {
-                try
-                {
-                    var json = wc.DownloadString("http://www.afisha.uz/app");
-                    RootObject m = JsonConvert.DeserializeObject<RootObject>(json);
-                    return m;
-                }
-                catch (Exception e)
-                {                    
-                    throw e;
-                    
-                }
-                
+            {            
+                var json = wc.DownloadString("http://www.afisha.uz/app/");
+                RootObject m = JsonConvert.DeserializeObject<RootObject>(json);
+                data = m;            
             }
         }
 
         public static List<Movie> getMovies() {
-            RootObject rootData = Main.getData();
-            return rootData.data.movies_afisha;            
+            return data.data.movies_afisha;            
+        }
+        public static List<TopMaterial> getTopMaterials() {
+            return data.data.top_materials;            
+        }
+        public static List<NearestMaterial> getNearestMaterials()
+        {
+            return data.data.nearest_materials;
+        }
+        public static List<RecentPhotoset> getRecentPhotoSet()
+        {
+            return data.data.recent_photosets;
+        }
+        public static List<RecentReview> getRecentReviews()
+        {
+            return data.data.recent_reviews;
         }
 
         public static MovieDetails getMovie(int movieId) {
@@ -46,22 +53,11 @@ namespace afishaWebApi.Models
         public static Cinema getCinema(int cinemaId) {
             using (WebClient wc = new WebClient())
             {
-                try
-                {
-                    var json = wc.DownloadString("http://www.afisha.uz/app/cinema/"+cinemaId);
-                    CinemaRoot m = JsonConvert.DeserializeObject<CinemaRoot>(json);
-                    return m.data;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
+                var json = wc.DownloadString("http://www.afisha.uz/app/cinema/" + cinemaId);
+                CinemaRoot m = JsonConvert.DeserializeObject<CinemaRoot>(json);
+                return m.data;
             }
         }
     }
 
-    class AfishaException : Exception { 
-
-    }
 }

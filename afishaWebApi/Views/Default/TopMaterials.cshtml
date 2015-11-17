@@ -1,0 +1,14 @@
+﻿<div data-bind="template: {name: 'templateTopMaterial',foreach: topMaterials }"></div>
+<script id="templateTopMaterial" type="text/html">
+    <div class="article articleMain">
+        <div>
+            <img data-bind="attr: {src: image_url}" />
+            <table>
+                <tr><td>Название:</td> <td data-bind="text: name"></td></tr>
+                <tr><td>Дата:</td> <td data-bind="text: 'C ' + date_start + ' по ' + date_end "></td></tr>
+                <tr><td>Описание:</td> <td data-bind="text: intro"></td></tr>
+                <tr><td>Тип:</td> <td data-bind="text: section_name"></td></tr>
+            </table>
+        </div>
+    </div>
+</script>

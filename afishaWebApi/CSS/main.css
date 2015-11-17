@@ -26,6 +26,9 @@
     .tabs li:first-child {
         border-left: 1px #000 solid;
     }    
+    .tabs li:last-child {
+        border-right: 1px #000 solid;
+    } 
 
 .mainBlock {
     padding:0 3px;
@@ -120,11 +123,14 @@ a:hover {
 }
 
 .preload {
-    position:absolute;
+    position:fixed;
     top:0;
     left:0;
-    background: url("../Images/loading.gif") no-repeat center;
-    display:block;
+    background: url("../Images/loading.gif") no-repeat #000 center;
+    display:none;
+    width:100%;
+    opacity:0.4;
+    height:100%;
 }
 
 

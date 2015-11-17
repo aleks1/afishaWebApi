@@ -8,7 +8,6 @@
 <div class="article" id="MovieDetailsMain">
     <img data-bind="attr: {src:image_big_path}" />
     <table>
-        <tr><td>ID:</td> <td data-bind="text: id"></td></tr>
         <tr><td>Название:</td> <td data-bind="text: name"></td></tr>
         <tr><td>Актеры:</td> <td data-bind="text: actors"> </td></tr>
         <tr><td>Страна: </td><td data-bind="text: country"> </td></tr>
@@ -40,7 +39,7 @@
 <script type="text/html" id="templateMovieAfisha">
     <div class="dateRow"><label>Дата показа:</label> <span data-bind="text: show_date"></span></div>
     <div class="shows article" data-bind="foreach: shows">
-        <a data-bind="text: cinema, click: cinemaDetails"></a><span data-bind="text: cinema_id"></span>
+        <a data-bind="text: cinema, click: cinemaDetails"></a></span>
         <div><label>Время показов:</label><span data-bind="text: formatted_times"></span></div>
         <div><label>Формат:</label><span data-bind="text: format"></span></div>
         <div><label>Doubled:</label><span data-bind="text: doubled"></span></div>

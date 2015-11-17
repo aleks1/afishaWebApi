@@ -15,9 +15,5 @@ namespace afishaWebApi.Controllers
         {            
             return View(Main.getMovies());
         }
-
-        public ViewResult Details(int id) {
-            return View("Movie", Main.getMovie(id));
-        }
 	}
 }

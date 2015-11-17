@@ -7,9 +7,6 @@
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/knockout-3.3.0.js"></script>
     <script src="~/Scripts/main.js"></script>
-    <script>
-        
-    </script>
     <title>Index</title>
 </head>
 <body>    
@@ -27,10 +24,18 @@
             <div id="MovieDetails">@Html.Partial("MovieDetails")</div>
             <div id="Cinema">@Html.Partial("Cinema")</div>
         </div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
+        <div>
+            <div id="NearestMaterialsBlock">@Html.Partial("NearestMaterials")</div>
+        </div>
+        <div>
+            <div id="RecentPhotosetsBlock">@Html.Partial("RecentPhotosets")</div>
+        </div>
+        <div>
+            <div id="RecentReviewsBlock">@Html.Partial("RecentReviews")</div>
+        </div>
+        <div>
+            <div id="TopMaterialsBlock">@Html.Partial("TopMaterials")</div>
+        </div>
     </div>
 </body>
 </html>

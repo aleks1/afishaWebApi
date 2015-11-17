@@ -1,0 +1,15 @@
+﻿<div data-bind="template: {name: 'templateRecentPhotoset',foreach: recentPhotosets }"></div>
+<script id="templateRecentPhotoset" type="text/html">
+    <div class="article articleMain">
+        <div>
+            <img data-bind="attr: {src: 'http://www.afisha.uz/' + cover.image_big_path}" />
+            <table>
+                <tr><td>Название:</td> <td data-bind="text: title"></td></tr>
+                <tr><td>Описание:</td> <td data-bind="text: description"></td></tr>
+                <tr><td>Фотограф:</td> <td data-bind="text: photographer"></td></tr>
+                <tr><td>Дата:</td> <td data-bind="text: date_event"></td></tr>
+            </table>
+        </div>
+    </div>
+</script>
+
